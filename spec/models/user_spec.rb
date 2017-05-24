@@ -46,14 +46,8 @@ RSpec.describe User, type: :model do
   describe 'relationships' do
     it 'has many stocks' do 
       user = create(:user)
-      user.stocks.create(
-        date: "2017-05-24 15:57:00",
-        open: "68.8700",
-        high: "68.8800",
-        low: "68.4500",
-        close: "68.7700",
-        volume: "9739975")
-      expect(user.stock.id).not_to eq(nil)
+      user.stocks.build
+      expect(user.stocks.first).not_to eq(nil)
     end
   end 
 end
