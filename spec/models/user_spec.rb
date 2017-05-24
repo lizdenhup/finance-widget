@@ -10,7 +10,16 @@ RSpec.describe User, type: :model do
         "Email can't be blank"
         ])
     end 
-    it 'requires that an email is unique'
+    it 'requires that an email is unique' do 
+      create(:user)
+      user = build(:user)
+      expect(user.valid?).to equal(false)
+      expect(user.errors.full_messages).to eq([
+        "Email has already been taken"
+        ])
+    end 
+
+    it 'requires that an email is valid'
   end 
 
   describe 'on save' do 
