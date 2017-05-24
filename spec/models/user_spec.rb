@@ -44,6 +44,11 @@ RSpec.describe User, type: :model do
   end 
 
   describe 'relationships' do
+
+    it 'has stocks that are deleted upon deletion of user' do 
+      
+    end 
+
     it 'has many stocks' do 
       user = create(:user)
       user.stocks.build
