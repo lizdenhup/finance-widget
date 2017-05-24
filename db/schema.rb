@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524214312) do
+ActiveRecord::Schema.define(version: 20170524223932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170524214312) do
   create_table "stocks", force: :cascade do |t|
     t.bigint "user_id"
     t.string "date"
-    t.float "open"
+    t.float "day_open"
     t.float "high"
     t.float "low"
     t.float "close"
