@@ -7,7 +7,8 @@ RSpec.describe User, type: :model do
       expect(user.valid?).to equal(false)
       expect(user.errors.full_messages).to eq([
         "Password can't be blank",
-        "Email can't be blank"
+        "Email can't be blank",
+        "Email is invalid"
         ])
     end 
     it 'requires that an email is unique' do 
@@ -19,7 +20,18 @@ RSpec.describe User, type: :model do
         ])
     end 
 
-    it 'requires that an email is valid'
+    it 'requires that an email is valid' do 
+      user1 = build(:user, email: 'test.com')
+      user2 = build(:user, email: 'test@something')
+      user3 = build(:user, email: 'test')
+
+      expect(user1.valid?).to equal(false)
+      expect(user1.errors.full_messages).to eq([
+        "Email is invalid"])
+      expect(user2.valid?).to equal(false)
+      expect(user3.valid?).to equal(false)
+
+    end 
   end 
 
   describe 'on save' do 
