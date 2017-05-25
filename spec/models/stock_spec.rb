@@ -5,6 +5,7 @@ RSpec.describe Stock, type: :model do
   describe 'relationships' do
     it 'belongs to a user' do 
       stock = create(:stock)
+#      binding.pry
       expect(stock.user.email).to eq("test@gmail.com")
     end 
   
