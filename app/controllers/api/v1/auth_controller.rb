@@ -10,6 +10,7 @@ class Api::V1::AuthController < ApplicationController
       }, status: 500
     elsif @user && @user.authenticate(params[:user][:password])
       # => return JSON with user token 
+      render 'users/user_with_token.json.jbuilder', user: @user
     else 
       render json: {
         errors: {
