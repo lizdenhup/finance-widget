@@ -1,20 +1,20 @@
 class Api::V1::UsersController < ApplicationController
 
-  def create
+  def create  
     @user = User.new(user_params)
-    # 1. create user
-    # 2. pass user_id to auth module to create JWT token
-    # 3. return user object and token as JSON to the client
-    # if creation is successful
-    # if creation is invalid
-    # return the activerecord error msgs as JSON
-    # set the status to 500 
-  end 
+    if @user.save  
+      render 'users/user_with_token.json.jbuilder', user: @user
+    else
+      render json: {
+        errors: @user.errors
+      }, status: 500
+    end
+  end
 
-  private
+  private 
 
-  def user_params
-    params.require(:user).permit(:email, :password)
-  end 
-
+    def user_params 
+      params.require(:user).permit(:email, :password)
+    end
 end
+
