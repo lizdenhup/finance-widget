@@ -9,7 +9,8 @@ Rails.application.routes.draw do
       post '/auth', to: "auth#login"
       post '/auth/refresh', to: "auth#refresh"
 
-      resources :stocks, only: [:show, :index]
+      # /api/v1/stocks
+      resources :stocks
     end 
   end 
 end
