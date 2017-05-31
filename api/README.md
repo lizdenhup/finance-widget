@@ -83,3 +83,10 @@ POST /api/v1/auth/refresh
     error: { message: 'Unauthorized' }
   }
   ```
+
+
+# stocks_is as an array on the user model 
+# in the stocks contoller query for the current_users stock_ids `stock_ids = current_user.stock_ids`
+# pass stocks_ids to a StockApiService.fetch_stocks_by_stock_id(stock_ids)
+# StockApiSerice.fetch_stocks
+
