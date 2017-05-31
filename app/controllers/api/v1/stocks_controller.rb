@@ -1,6 +1,6 @@
 class Api::V1::StocksController < ApplicationController
   before_action :authenticate_token!
-  
+
   def new
 
   end
@@ -14,14 +14,6 @@ class Api::V1::StocksController < ApplicationController
   end 
 
   def show
-
-  end 
-
-  def edit
-
-  end
-
-  def update
 
   end 
 
