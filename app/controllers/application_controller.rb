@@ -12,25 +12,23 @@ def authenticate_token!
       @user_id = decoded[0]["user_id"]
     rescue JWT::DecodeError
       errors = [{ message: "Token is invalid!" }]
-  end
-
-  if !current_user || !decoded || errors
-    render json: {
-      errors: errors
-    }, status: 403
-  end
-
+    end
+      if !current_user || !decoded || errors
+        render json: {
+          errors: errors
+        }, status: 403
+      end
   else 
-  render json: {
-    errors: [
-      { message: "You must include a JWT token!" }
-    ]
-  }, status: 403
+    render json: {
+      errors: [
+        { message: "You must include a JWT token!" }
+      ]
+    }, status: 403
   end
 end
 
   def current_user
-
+    @user ||= User.find_by(id: @user_id) if @user_id
   end 
 
 end
