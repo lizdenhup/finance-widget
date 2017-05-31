@@ -19,12 +19,13 @@ RSpec.describe "Api::V1::Stocks", type: :request do
   it 'requires all routes to have a token' do 
     responses = []
     response_bodies = []
+
     get '/api/v1/stocks', headers: @tokenless_headers
     responses << response
     response_bodies << JSON.parse(response.body)
 
-    response.each { |resp| expect(resp).to have_http_status(403)}
-    reponse_bodies.each {|bod| expect(bod["errors"]).to_eq([{"message" => "Token is invalid!"}]) }
+    responses.each { |resp| expect(resp).to have_http_status(403)}
+    response_bodies.each {|bod| expect(bod["errors"]).to eq([{"message" => "You must include a JWT token!"}]) }
   end 
 
 end 
