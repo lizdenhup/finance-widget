@@ -84,21 +84,20 @@ RSpec.describe "Api::V1::Users", type: :request do
   end
 
   describe 'POST /auth/refresh' do 
-    describe "on success" do 
 
-      before(:each) do  
-        token = Auth.create_token(@user.id)
-    
+    describe 'on success' do 
+    it "returns the existing user (from the headers JWT) and a new JWT token" do  
+        token = Auth.create_token(@user.id)        
+
         post "/api/v1/auth/refresh", 
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer: #{token}"
+          }
           
-        @response = response
-      end
+        body = JSON.parse(response.body)
 
-      it "returns the existing user (from the header's JWT) and a new JWT token" do  
-        body = JSON.parse(@response.body)
-
-        expect(@response.status).to eq(200)
+        expect(response.status).to eq(200)
         expect(body['user']['id']).not_to eq(nil)
         expect(body['user']['email']).to eq('test@gmail.com')
         expect(body['user']['password_digest']).to eq(nil)
@@ -106,47 +105,22 @@ RSpec.describe "Api::V1::Users", type: :request do
       end
     end
 
-    # describe "on error" do
+    describe "on error" do
 
-    #   it "unable to find user with email" do  
-    #     params = { 
-    #       user: { 
-    #         email: 'testfail@gmail.com', 
-    #         password: 'password' 
-    #       } 
-    #     }
+      it "unable to find user with email" do  
+        token = 'abc.123.def.456'     
 
-    #     post "/api/v1/auth", 
-    #       params: params.to_json,
-    #       headers: { 'Content-Type': 'application/json' }
+        post "/api/v1/auth/refresh", 
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer: #{token}"
+          }
           
-    #     body = JSON.parse(response.body)
+        body = JSON.parse(response.body)
 
-    #     expect(response.status).to eq(500)
-    #     expect(body["errors"]).to eq({
-    #       "email"=>["Unable to find a user with the provided email address"]
-    #     })
-    #   end
-
-    #   it "password does not match the provided email" do  
-    #     params = { 
-    #       user: { 
-    #         email: 'test@gmail.com', 
-    #         password: 'passwordfail' 
-    #       } 
-    #     }
-
-    #     post "/api/v1/auth", 
-    #       params: params.to_json,
-    #       headers: { 'Content-Type': 'application/json' }
-          
-    #     body = JSON.parse(response.body)
-
-    #     expect(response.status).to eq(500)
-    #     expect(body["errors"]).to eq({
-    #       "password"=>["Password does not match the provided email"]
-    #     })
-    #   end
-    # end
-  end 
+        expect(response.status).to eq(403)
+        expect(body["errors"]).to eq([{ "message" => "Token is invalid!" }])
+      end
+    end
+  end
 end
