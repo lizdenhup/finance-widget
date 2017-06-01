@@ -9,8 +9,9 @@ Rails.application.routes.draw do
       post '/auth', to: "auth#login"
       post '/auth/refresh', to: "auth#refresh"
 
-      # /api/v1/stocks
-      resources :stocks
+      # /api/v1/search
+      get '/search', to: 'searches#search'
+      post '/search', to: 'searches#show'
     end 
   end 
 end
