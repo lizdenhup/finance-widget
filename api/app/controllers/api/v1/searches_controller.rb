@@ -2,7 +2,8 @@ class Api::V1::SearchesController < ApplicationController
 
 def search
   fetch_stocks = StockService.new
-  fetch_stock(params[:query])
+  result = fetch_stocks.fetch_stock(params[:query])
+  binding.pry
 end 
 
 
