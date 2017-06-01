@@ -43,29 +43,4 @@ RSpec.describe User, type: :model do
     end 
   end 
 
-  describe 'relationships' do
-
-    it 'has stocks that are deleted upon deletion of user' do 
-      user = create(:user)
-      stock = user.stocks.create(
-        date: "2017-05-24 15:57:00",
-        day_open: 68.8700,
-        high: 68.8800,
-        low: 68.4500,
-        close: 68.7700,
-        volume: 9739975,
-        symbol: "MSFT") 
-      #binding.pry 
-      expect(user.stocks.first).not_to eq(nil)
-      user.destroy
-      stock = Stock.find_by(id: stock.id)
-      expect(stock).to eq(nil)
-    end 
-
-    it 'has many stocks' do 
-      user = create(:user)
-      user.stocks.build
-      expect(user.stocks.first).not_to eq(nil)
-    end
-  end 
 end
