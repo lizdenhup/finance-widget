@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :stocks, dependent: :destroy
   
   validates :email, presence: true 
   validates :email, uniqueness: true 
