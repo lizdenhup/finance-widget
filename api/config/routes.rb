@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
       # /api/v1/search
       get '/search', to: 'searches#search'
-      post '/search', to: 'searches#show'
     end 
   end 
 end

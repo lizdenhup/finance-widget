@@ -1,6 +1,7 @@
 class StockService 
 
   def fetch_stock(stock_symbol)
+    stock_symbol = 'AAPL'
     @response = Faraday.get 'http://www.alphavantage.co/query?' do |req|
       req.params['function'] = 'TIME_SERIES_DAILY'
       req.params['symbol'] = stock_symbol
