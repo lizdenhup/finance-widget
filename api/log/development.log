@@ -2104,3 +2104,59 @@ Processing by Api::V1::SearchesController#search as JSON
 Completed 200 OK in 1629ms (Views: 10.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/api/v1/search" for 127.0.0.1 at 2017-06-01 18:23:50 -0500
+Processing by Api::V1::SearchesController#search as JSON
+  Parameters: {"search"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 149ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/search" for 127.0.0.1 at 2017-06-01 18:24:47 -0500
+Processing by Api::V1::SearchesController#search as JSON
+  Parameters: {"search"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 556ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/search" for 127.0.0.1 at 2017-06-01 18:26:20 -0500
+Processing by Api::V1::SearchesController#search as JSON
+  Parameters: {"search"=>{}}
+  Rendering text template
+  Rendered text template (0.1ms)
+Completed 200 OK in 40599ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/search" for 127.0.0.1 at 2017-06-01 18:27:15 -0500
+Processing by Api::V1::SearchesController#search as JSON
+  Parameters: {"search"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 34925ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/search?query=GOOGL" for 127.0.0.1 at 2017-06-01 18:27:54 -0500
+Processing by Api::V1::SearchesController#search as JSON
+  Parameters: {"query"=>"GOOGL", "search"=>{}}
+Started GET "/api/v1/search?query=GOOGL" for 127.0.0.1 at 2017-06-01 18:33:20 -0500
+Completed   in 363307ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/search?query=GOOGL" for 127.0.0.1 at 2017-06-01 18:34:07 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SearchesController#search as JSON
+  Parameters: {"query"=>"GOOGL", "search"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 20509ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/search?query=GOOGL" for 127.0.0.1 at 2017-06-01 18:34:34 -0500
+Processing by Api::V1::SearchesController#search as JSON
+  Parameters: {"query"=>"GOOGL", "search"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1782ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
