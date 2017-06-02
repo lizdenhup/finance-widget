@@ -83,3 +83,17 @@ POST /api/v1/auth/refresh
     error: { message: 'Unauthorized' }
   }
   ```
+### Integrating with Alpha Vantage
+
+GET /api/v1/search 
+
+
+POST /api/v1/search
+ params: [:stock_symbol]
+
+ If the symbol is a valid stock symbol, the search controller will instantiate a new StockService object to make the API call. The response can then be displayed to the user.
+
+ stocks_is as an array on the user model 
+ in the stocks contoller query for the current_users stock_ids `stock_ids = current_user.stock_ids`
+ pass stocks_ids to a StockApiService.fetch_stocks_by_stock_id(stock_ids)
+ StockApiSerice.fetch_stocks
