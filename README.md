@@ -1,9 +1,14 @@
 ## About this application
 finance-widget is a Rails API back-end for interacting with an external API called Alpha Vantage. Alpha Vantage supplies time-series information for various equities over the trailing 52-week period. 
 
-This application uses JWT tokens to authorize/authenticate users.
+This application uses JWT tokens to authorize/authenticate users and has been successfully deployed to Heroku. 
+
+finance-widget was developed using TDD. If you clone this repository and then cd into the directory called 'finance-widget-rails-api' on your machine you can run the tests by typing 'rspec' into your terminal. 
+
+This application is an API only (that is, it is decoupled from the view layer). To see the front-end which corresponds to this application, please visit https://react-finance-widget.herokuapp.com/ and sign up for an account. Please note that the front-end of this application is currently under construction. Feel free to send any bug reports or questions to this app's creator at lizdenhup@gmail.com.
 
 ## Server Side Routes 
+This is an overview of the routes for authenticating a user via JWT and the params each route takes.
 
 POST /api/v1/users  
   - creates a user account 
@@ -93,7 +98,3 @@ POST /api/v1/search
 
  If the symbol is a valid stock symbol, the search controller will instantiate a new StockService object to make the API call. The response can then be displayed to the user.
 
- stocks_is as an array on the user model 
- in the stocks contoller query for the current_users stock_ids `stock_ids = current_user.stock_ids`
- pass stocks_ids to a StockApiService.fetch_stocks_by_stock_id(stock_ids)
- StockApiSerice.fetch_stocks
