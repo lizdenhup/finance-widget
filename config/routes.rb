@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do 
       # /api/v1/users
       # /api/v1/users/:user_id 
-      resources :users, only: [:create, :show, :edit, :update]
+      resources :users, only: [:create, :show]
 
       # /api/v1/auth
       post '/auth', to: "auth#login"
