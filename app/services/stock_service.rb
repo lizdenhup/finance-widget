@@ -9,4 +9,11 @@ class StockService
     @response.body
   end 
 
+  def pin_stock(stockSymbol, stock_id)
+    @user = User.find_by(email: params[:user][:email])
+    if @user 
+      @user.stocks << { stockSymbol: stockSymbol, stock_id: stock_id } 
+    end 
+  end 
+  
 end 
