@@ -2,8 +2,8 @@ class Api::V1::StocksController < ApplicationController
 before_action :authenticate_token!, only: [:create, :update, :destroy]
 
   def index
-    # @stocks = User.find_by(id: params[:user_id])&.stocks
-    # render 'stocks/stocks.json.jbuilder', stocks: @stocks
+    @stocks = User.find_by(id: params[:user_id])&.stocks
+    render 'stocks/stocks.json.jbuilder', stocks: @stocks
   end
 
   def show
@@ -24,7 +24,7 @@ before_action :authenticate_token!, only: [:create, :update, :destroy]
     if @user.id == current_user.id
       @stock = @user.stocks.new(stock_params)
       if @stock.save
-        render 'stocks/stocks.json.jbuilder', stock: @stock
+        render 'stocks/stock.json.jbuilder', stock: @stock
       else
         render json: {
           errors: @stock.errors.full_messages
