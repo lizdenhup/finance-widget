@@ -30,6 +30,7 @@ before_action :authenticate_token!, only: [:create, :update, :destroy]
           errors: @stock.errors.full_messages
         }, status: 500
       end
+    end 
   end
 
   def destroy
