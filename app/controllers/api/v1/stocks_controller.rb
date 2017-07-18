@@ -2,7 +2,7 @@ class Api::V1::StocksController < ApplicationController
 before_action :authenticate_token!, only: [:create, :update, :destroy]
 
   def index
-    @stocks = User.find_by(id: params[:user_id])&.stocks
+    @stocks = User.find_by(id: params[:user_id]).stocks
     render 'stocks/stocks.json.jbuilder', stocks: @stocks
   end
 
