@@ -1,1 +1,3 @@
-json.stock @stock 
+json.stock do 
+  json.(@stock, :id, :name)
+end
