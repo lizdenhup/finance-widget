@@ -1,0 +1,1 @@
+json.stock @stock 
