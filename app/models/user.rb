@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :stocks 
+  has_many :stocks_users
+  has_many :stocks, through: :stocks_users 
+
   has_secure_password
   
   validates :email, presence: true 

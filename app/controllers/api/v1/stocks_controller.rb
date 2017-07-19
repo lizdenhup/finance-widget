@@ -50,7 +50,7 @@ before_action :authenticate_token!, only: [:create, :update, :destroy]
   private 
 
     def stock_params 
-      params.require(:stock).permit(:name, :user_id)
+      params.require(:stock).permit(:name)
     end
 end
 
