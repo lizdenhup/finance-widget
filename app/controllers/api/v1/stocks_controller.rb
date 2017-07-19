@@ -18,12 +18,14 @@ before_action :authenticate_token!, only: [:create, :update, :destroy]
       }, status: 404
     end
   end
-
+# in reality you could do current_user.stocks.new 
+# remove user_id from url because you're exposing # of users etc
+# save SQL queries 
   def create
     @user = User.find_by(id: params[:user_id])
     if @user.id == current_user.id
       @stock = @user.stocks.new(stock_params)
-      if @stock.save
+      if @user.stocks << @stock
         render 'stocks/stock.json.jbuilder', stock: @stock
       else
         render json: {
